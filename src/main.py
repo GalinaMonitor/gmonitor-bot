@@ -23,7 +23,10 @@ class GptRequest(BaseModel):
 
 @dp.message(CommandStart())  # type: ignore
 async def command_start_handler(message: Message) -> None:
-    await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!")
+    await message.answer(
+        f"Привет, {html.bold(message.from_user.full_name)}!\n"
+        f"Попробуй задать мне вопрос."
+    )
 
 
 @dp.message()  # type: ignore
@@ -36,7 +39,9 @@ async def echo_handler(message: Message) -> None:
             TopicsEnum.GPT_BOT_REQUEST,
         )
     except TypeError:
-        await message.answer("Nice try!")
+        await message.answer(
+            "Твой запрос поломал бота)\тПопробуй переформулировать запрос."
+        )
 
 
 async def main() -> None:
