@@ -7,7 +7,7 @@ from faststream import FastStream
 from faststream.kafka import KafkaBroker
 from pydantic import BaseModel
 
-from settings import settings
+from src.settings import settings
 
 
 class TopicsEnum(StrEnum):
