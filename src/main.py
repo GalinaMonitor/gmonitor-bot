@@ -8,8 +8,8 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 from pydantic import BaseModel
 
-from src.broker import broker, TopicsEnum
-from src.settings import settings
+from broker import broker, TopicsEnum
+from settings import settings
 
 logger = getLogger(__name__)
 
