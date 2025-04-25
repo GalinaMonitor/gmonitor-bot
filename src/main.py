@@ -32,7 +32,7 @@ async def command_start_handler(message: Message) -> None:
 @dp.message()  # type: ignore
 async def echo_handler(message: Message) -> None:
     try:
-        await message.send_copy(chat_id=message.chat.id)
+        await message.answer("Ваш запрос обрабатывается...")
         await broker.connect()
         await broker.publish(
             GptRequest(chat_id=message.chat.id, text=message.text),
