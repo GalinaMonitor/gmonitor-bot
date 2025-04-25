@@ -22,7 +22,8 @@ class GptResponse(BaseModel):
 
 broker = KafkaBroker(f"{settings.kafka_host}:{settings.kafka_port}")
 bot = Bot(
-    token=settings.api_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+    token=settings.api_token,
+    default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN),
 )
 app = FastStream(broker)
 
