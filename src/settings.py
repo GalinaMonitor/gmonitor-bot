@@ -2,7 +2,7 @@ import logging
 
 from pydantic_settings import BaseSettings
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
 
 
 class Settings(BaseSettings):
