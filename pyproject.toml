@@ -6,6 +6,11 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "aiogram==3.20",
+    "boto3>=1.38.4",
     "faststream[cli,kafka]>=0.5.39",
+    "gmonitorlib",
     "pydantic-settings==2.9.1",
 ]
+
+[tool.uv.sources]
+gmonitorlib = { git = "https://github.com/GalinaMonitor/gmonitor-lib.git", rev = "1.0.0" }

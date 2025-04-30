@@ -6,19 +6,14 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message
-from pydantic import BaseModel
+from gmonitor_lib.schemas import TopicsEnum, GptRequest
 
-from broker import broker, TopicsEnum
+from broker import broker
 from settings import settings
 
 logger = getLogger(__name__)
 
 dp = Dispatcher()
-
-
-class GptRequest(BaseModel):
-    chat_id: int
-    text: str
 
 
 @dp.message(CommandStart())  # type: ignore
@@ -40,7 +35,7 @@ async def echo_handler(message: Message) -> None:
         )
     except TypeError:
         await message.answer(
-            "Твой запрос поломал бота)\тПопробуй переформулировать запрос."
+            "Твой запрос поломал бота)\nПопробуй переформулировать запрос."
         )
 
 
