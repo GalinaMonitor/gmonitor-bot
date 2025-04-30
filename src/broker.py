@@ -7,7 +7,6 @@ from faststream.kafka import KafkaBroker
 from gmonitor_lib.schemas import GptResponse, TopicsEnum
 
 from settings import settings
-from src.services import MessageService
 
 broker = KafkaBroker(f"{settings.kafka_host}:{settings.kafka_port}")
 bot = Bot(
@@ -19,6 +18,8 @@ app = FastStream(broker)
 
 @broker.subscriber(TopicsEnum.GPT_BOT_RESULT)  # type: ignore
 async def wait_gpt_response(response: GptResponse) -> None:
+    from src.services import MessageService
+
     try:
         await MessageService().process_message(response)
     except TelegramBadRequest:
