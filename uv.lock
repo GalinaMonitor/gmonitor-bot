@@ -357,30 +357,9 @@ wheels = [
 ]
 
 [[package]]
-name = "gmonitorbot"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "aiogram" },
-    { name = "boto3" },
-    { name = "faststream", extra = ["cli", "kafka"] },
-    { name = "gmonitorlib" },
-    { name = "pydantic-settings" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "aiogram", specifier = "==3.20" },
-    { name = "boto3", specifier = ">=1.38.4" },
-    { name = "faststream", extras = ["cli", "kafka"], specifier = ">=0.5.39" },
-    { name = "gmonitorlib", git = "https://github.com/GalinaMonitor/gmonitor-lib.git?rev=1.0.0" },
-    { name = "pydantic-settings", specifier = "==2.9.1" },
-]
-
-[[package]]
-name = "gmonitorlib"
+name = "gmonitor-lib"
 version = "1.0.0"
-source = { git = "https://github.com/GalinaMonitor/gmonitor-lib.git?rev=1.0.0#880005462295fac8af4d0e154f75102e8a7056e0" }
+source = { git = "https://github.com/GalinaMonitor/gmonitor-lib.git?rev=1.0.2#cc82823ff44f33e8c19345d332a102ab653bd801" }
 dependencies = [
     { name = "boto3" },
     { name = "httpx" },
@@ -389,6 +368,27 @@ dependencies = [
     { name = "setuptools" },
     { name = "twine" },
     { name = "wheel" },
+]
+
+[[package]]
+name = "gmonitorbot"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "aiogram" },
+    { name = "boto3" },
+    { name = "faststream", extra = ["cli", "kafka"] },
+    { name = "gmonitor-lib" },
+    { name = "pydantic-settings" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "aiogram", specifier = "==3.20" },
+    { name = "boto3", specifier = ">=1.38.4" },
+    { name = "faststream", extras = ["cli", "kafka"], specifier = ">=0.5.39" },
+    { name = "gmonitor-lib", git = "https://github.com/GalinaMonitor/gmonitor-lib.git?rev=1.0.2" },
+    { name = "pydantic-settings", specifier = "==2.9.1" },
 ]
 
 [[package]]
