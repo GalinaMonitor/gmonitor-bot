@@ -6,9 +6,8 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message
-from gmonitor_lib.schemas import TopicsEnum, GptRequest
 
-from broker import broker
+from services import MessageService
 from settings import settings
 
 logger = getLogger(__name__)
@@ -26,17 +25,9 @@ async def command_start_handler(message: Message) -> None:
 
 @dp.message()  # type: ignore
 async def echo_handler(message: Message) -> None:
-    try:
-        await message.answer("Ваш запрос обрабатывается...")
-        await broker.connect()
-        await broker.publish(
-            GptRequest(chat_id=message.chat.id, text=message.text),
-            TopicsEnum.GPT_BOT_REQUEST,
-        )
-    except TypeError:
-        await message.answer(
-            "Твой запрос поломал бота)\nПопробуй переформулировать запрос."
-        )
+    await message.answer("Ваш запрос обрабатывается...")
+    await MessageService().process_income_message(message)
+
 
 
 async def main() -> None:
