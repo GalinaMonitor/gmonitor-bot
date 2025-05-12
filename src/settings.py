@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    logging_level: str = logging.WARNING
+    logging_level: int = logging.WARNING
     api_token: str = "token"
     kafka_host: str = "localhost"
     kafka_port: int = 9092
